@@ -1,0 +1,52 @@
+<html lang="en"></html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./main.css"  />
+    <script type="text/javascript" src="./datass.js"></script>
+</head>
+<body>
+
+    <label id = "title">
+    </label>
+    <br>
+    <label id = "data">
+    </label>
+    <br>
+    <br>
+    <label id = "text">
+    </label>
+ 
+    <script>
+    var counter = 0;
+    var elem = document.getElementById("title");
+    var elem1 = document.getElementById("data");
+    var elem2 = document.getElementById("text");
+    var inst = setInterval(change, 1500);
+    var color=['#0a3264','#f8c537','#ff3b2c', '#9225a5'];
+
+    var arr = [];
+
+    function change() {
+        elem.innerHTML = titlelss[counter];
+        elem1.innerHTML = datass[counter];
+        elem2.innerHTML = textss[counter];
+
+        while(arr.length < 1){
+        var r = Math.floor(Math.random() * 4) + 0;
+        if(arr.indexOf(r) === -1) arr.push(r);}
+
+        var choose = color[arr[0]];
+           
+        var editCSS = document.createElement('style')
+        editCSS.innerHTML = "#title {color:"+ choose+";}  #data {color:"+ choose+";}";
+        document.body.appendChild(editCSS);
+
+        counter++;
+        arr = [];
+        if (counter >= titlelss.length) {
+            counter = 0;
+            //clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
+        }
+    }
+    </script>
+
+</body>
